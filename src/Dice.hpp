@@ -1,19 +1,20 @@
-#ifndef DICE_H
-#define DICE_H
+#ifndef DICE_HPP
+#define DICE_HPP
 
-#include <vector>
 #include "Random.hpp"
+#include <vector>
+
 
 class Dice
 {
-private:
+  private:
     Random random;
     unsigned int lastRoll;
 
-public:
+  public:
     Dice();
     unsigned roll();
-    unsigned getLastRoll();
+    unsigned getLastRoll() const;
 };
 
-#endif
+#endif // DICE_HPP

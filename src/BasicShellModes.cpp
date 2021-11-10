@@ -1,29 +1,30 @@
-#include "GameStates.hpp"
+#include "BasicShellModes.hpp"
+#include "GameShell.hpp"
 
-PlayerlistEdit::PlayerlistEdit(std::vector<Player> &players) : players(players)
+PlayerlistEditShellMode::PlayerlistEditShellMode(std::vector<Player> &players) : players(players)
 {
 }
 
-std::string PlayerlistEdit::getHelpMessage()
+std::string PlayerlistEditShellMode::getHelpMessage()
 {
     return "add <name> - add a player.\ndelete <index> - delete a player.\nlist - get list of a players.\n"
-           "start - start the game.\n\nYou need at least two players to start the game.";
+           "start - start the shell.\n\nYou need at least two players to start the shell.";
 }
 
-void PlayerlistEdit::addPlayer(std::string playerName)
+void PlayerlistEditShellMode::addPlayer(std::string playerName)
 {
     Player newPlayer(playerName);
     this->players.push_back(newPlayer);
 }
 
-void PlayerlistEdit::deletePlayer(size_t playerIndex)
+void PlayerlistEditShellMode::deletePlayer(size_t playerIndex)
 {
     if (playerIndex > this->players.size())
         throw std::range_error("Invalid index");
     this->players.erase(this->players.begin() + playerIndex - 1);
 }
 
-void PlayerlistEdit::processCommand(std::string command)
+void PlayerlistEditShellMode::processCommand(std::string command, GameShell &shell)
 {
     std::string onlyCommand;
     std::string commandArgument;
@@ -64,8 +65,8 @@ void PlayerlistEdit::processCommand(std::string command)
         if (this->players.size() < 2)
             std::cout << "You need at least two players to start the game.\n";
         else
-            std::cout << "Game starting...\n";
+            shell.chageMode(shell.getUpperSectionGameMode());
     }
     else
-        std::cout << "Unknown command. Type \"help\" for help.\n";
+        throw 0;
 }

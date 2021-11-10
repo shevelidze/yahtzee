@@ -1,6 +1,8 @@
 #include "Dice.hpp"
 
-Dice::Dice() : random(6){};
+Dice::Dice() : random(6){
+    this->lastRoll = this->random.getNext();
+};
 
 unsigned int Dice::roll()
 {
@@ -8,7 +10,7 @@ unsigned int Dice::roll()
     return lastRoll;
 }
 
-unsigned Dice::getLastRoll()
+unsigned Dice::getLastRoll() const
 {
     return this->lastRoll;
 }

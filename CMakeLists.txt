@@ -1,10 +1,15 @@
-cmake_minimum_required(VERSION 3.21.2)
+cmake_minimum_required(VERSION 3.20.2)
 
 project(Dice)
 
+
+file(GLOB helloworld_SRC
+     "src/*.cpp"
+)
+
 add_executable(
     main
-    src/main.cpp src/Dice.cpp src/Fibanachi.cpp src/Random.cpp src/DiceASCIIArt.cpp src/GameShell.cpp src/GameStates.cpp src/Player.cpp
+    ${helloworld_SRC}
 )
 
 file(COPY dice.txt DESTINATION .)

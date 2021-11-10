@@ -1,13 +1,13 @@
-#ifndef FIBANACHI_H
-#define FIBANACHI_H
+#ifndef FIBANACHI_HPP
+#define FIBANACHI_HPP
 
 class Fibanachi
 {
-private:
+  private:
     unsigned int left = 0, right = 1;
 
-public:
+  public:
     unsigned int getNext();
 };
 
-#endif
+#endif // FIBANACHI_HPP

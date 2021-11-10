@@ -1,20 +1,24 @@
-#ifndef GAMESHELL_H
-#define GAMESHELL_H
+#ifndef GAMESHELL_HPP
+#define GAMESHELL_HPP
 
-#include "GameStates.hpp"
+#include "BasicShellModes.hpp"
 #include <vector>
 
 class GameShell
 {
-private:
+  private:
     std::vector<Player> players;
-    GameState* playerlistEditState;
-    GameState* currentState;
-    void chageState(GameState* newState);
+    ShellMode *playerlistEditMode;
+    ShellMode *upperSectionGameMode;
+    ShellMode *currentMode;
+    bool running = true;
 
-public:
+  public:
+    void chageMode(ShellMode *newMode);
     GameShell();
     void launchShell();
+    ShellMode *const getUpperSectionGameMode();
+    void stopShell();
 };
 
-#endif
+#endif // GAMESHELL_HPP
